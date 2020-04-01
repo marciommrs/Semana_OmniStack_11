@@ -30,12 +30,16 @@ async function createOng(request, response) {
   const id = crypto.randomBytes(4).toString('HEX');
 
   await connection('ongs').insert({
-    id, name, email, whatsapp, city, uf
+    id,
+    name,
+    email,
+    whatsapp,
+    city,
+    uf
   });
 
-  console.log(data);
 
-  return response.json(data);
+  return response.json({ id });
 }
 
 module.exports = routes; //Exportar a variável routes como módulo.
