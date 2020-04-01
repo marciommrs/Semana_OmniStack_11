@@ -16,6 +16,16 @@ routes.get('/', (request, response) => {
 }); //Criando a rota raiz retornando um objeto Json.
 
 
+//------------------------------------------------------------------------------
+// Create ongs route.
+//------------------------------------------------------------------------------
+routes.get('/ongs', async (request, response) => {
+  const ongs = await connection('ongs').select('*');
+
+  return response.json(ongs);
+})
+
+
 
 //------------------------------------------------------------------------------
 // Create ongs route.
@@ -37,7 +47,6 @@ async function createOng(request, response) {
     city,
     uf
   });
-
 
   return response.json({ id });
 }
