@@ -19,17 +19,13 @@ routes.get('/', (request, response) => {
 //------------------------------------------------------------------------------
 // List ongs route.
 //------------------------------------------------------------------------------
-routes.get('/ongs', async (request, response) => {
-  return OngController.list(request, response)
-})
+routes.get('/ongs', OngController.index)
 
 
 //------------------------------------------------------------------------------
 // Create ongs route.
 //------------------------------------------------------------------------------
-routes.post('/ongs', async (request, response) => {
-  return OngController.create(request, response)
-});
+routes.post('/ongs', OngController.create);
 
 
 module.exports = routes; //Exportar a variável routes como módulo.
