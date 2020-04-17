@@ -1,6 +1,7 @@
 const express = require('express'); //Importando o módulo express.
 const OngController = require('./controllers/OngController')
 const IncidentController = require('./controllers/IncidentController')
+const ProfileController = require('./controllers/ProfileController')
 
 
 const routes = express.Router(); //Desacoplar o módulo de rotas na variável routes.
@@ -22,6 +23,8 @@ routes.get('/', (request, response) => {
 //------------------------------------------------------------------------------
 routes.get('/ongs', OngController.index);
 routes.post('/ongs', OngController.create);
+
+routes.get('/profile', ProfileController.index);
 
 //------------------------------------------------------------------------------
 // Incidents route.
