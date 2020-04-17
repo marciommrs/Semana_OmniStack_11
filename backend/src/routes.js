@@ -20,14 +20,15 @@ routes.get('/', (request, response) => {
 //------------------------------------------------------------------------------
 // Ongs routes.
 //------------------------------------------------------------------------------
-routes.get('/ongs', OngController.index) //List
-routes.post('/ongs', OngController.create); //create
+routes.get('/ongs', OngController.index);
+routes.post('/ongs', OngController.create);
 
 //------------------------------------------------------------------------------
 // Incidents route.
 //------------------------------------------------------------------------------
-routes.get('/incidents', IncidentController.index) //List
-routes.post('/incidents', IncidentController.create); //Create
+routes.get('/incidents', IncidentController.index);
+routes.post('/incidents', IncidentController.create);
+routes.delete('/incidents/:id', IncidentController.delete);
 
 
 module.exports = routes; //Exportar a variável routes como módulo.
