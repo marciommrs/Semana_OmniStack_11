@@ -10,10 +10,18 @@ module.exports = {
 
     const[count] = await connection('incidents').count();
 
-    const incidents = await connection('incidents')      
+    const incidents = await connection('incidents')
+      .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
       .limit(5) //Limito por 5 ocorrências
       .offset((page -1) * 5) // Começa a partir do 0 e os próximos 5. Offset diz qual é o início.
-      .select('*');
+      .select([
+        'incidents.*', 
+        'ongs.name', 
+        'ongs.email', 
+        'ongs.whatsapp', 
+        'ongs.city', 
+        'ongs.uf'
+      ]);
     
     console.log(count); //Valor retornado { 'count(*)': 13 }
     response.header('X-Total-Count', count['count(*)']);
