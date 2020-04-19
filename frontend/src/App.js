@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 
 function App() {
-  let counter = 0;
+  const [counter, setCounter] = useState(0);
 
   function increment() {
-    counter++;
-    console.log(counter);
+    setCounter(counter + 1);
   }
 
   return (
