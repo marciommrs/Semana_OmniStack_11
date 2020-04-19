@@ -33,6 +33,17 @@ form input { /* Estiliza todos os inputs da aplicação.*/
   padding: 0 24px;
 }
 
+form textarea { /* Estiliza todos os inputs da aplicação.*/
+  width: 100%;
+  resize: vertical;
+  min-height: 140px;
+  color: #333;
+  border: 1px solid #dcdce6;
+  border-radius: 8px;
+  padding: 16px 24px; /* Distanciar o placeholder 16px da direita e 24px do topo.*/
+  line-height: 24px; /* Aumentar a distância entre as linhas escritas no textarea. */
+}
+
 .button  {
   width: 100%;
   height: 60px;
