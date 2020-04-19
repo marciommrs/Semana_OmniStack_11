@@ -10,36 +10,17 @@
   justify-content: center; /*alinhar os itens horizontalmente ao centro*/
 }
 
-.logon-container session.form {
+.logon-container section {
   width: 100%; /*ocupar toda largura*/
   max-width: 350px; /*tamanho máximo*/
   margin-right: 30px; /*distanciar do item a direita(logo)*/
 }
 
-.logon-container session.form form {
+.logon-container section form {
   margin-top: 100px; /*distanciar o logoImg*/
 }
 
-.logon-container session.form form h1 {
+.logon-container section form h1 {
   font-size: 32px;
   margin-bottom: 32px;
-}
-
-.logon-container session.form form a {
-  display: flex;
-  align-items: center;
-  margin-top: 40px;
-  color: #41414d;
-  font-size: 18px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: opacity 0.2s;
-}
-
-.logon-container session.form form a svg { /* Os ícones no react são sempre svg*/
-  margin-right: 8px;
-}
-
-.logon-container session.form form a:hover {
-  opacity: 0.8;
 }
