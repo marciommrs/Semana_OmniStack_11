@@ -11,7 +11,9 @@ import styles from './styles';
 
 export default function Incidents() {
   const [incidents, setIncidents] = useState([]);
-  const [total, setTotal] = useState(0);
+  const [totalIncidents, setTotalIncidents] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
   
@@ -19,10 +21,30 @@ export default function Incidents() {
     navigation.navigate('Detail', incident);
   }
   
+  async function loadIncidentsRefresh() {
+    console.log('REFRESHING ITENS')
+    return;
+  }
+
   async function loadIncidents() {
-    const response = await api.get('/incidents?page=1');
-    setIncidents(response.data);
-    setTotal(response.headers['x-total-count']);
+    if (loading) {
+      return;
+    }
+
+    if (totalIncidents > 0 && incidents.length === totalIncidents) {
+      return;
+    }
+
+    setLoading(true);
+
+    const response = await api.get('incidents', {
+      params: {page: currentPage}
+    });
+
+    setLoading(false);
+    setCurrentPage(currentPage + 1);
+    setIncidents([... incidents, ... response.data]);
+    setTotalIncidents(response.headers['x-total-count']);
   }
 
   useEffect(() => {
@@ -34,7 +56,7 @@ export default function Incidents() {
       <View style={styles.header}>
         <Image source={logoImg}/>
         <Text style={styles.headerText}>
-          Total de <Text style={styles.headerTextBold}>{total} casos</Text>.
+          Total de <Text style={styles.headerTextBold}>{totalIncidents} casos</Text>.
         </Text>
       </View>
 
@@ -47,6 +69,9 @@ export default function Incidents() {
         style={styles.incidentList}
         keyExtractor={incident => String(incident.id)}
         showsVerticalScrollIndicator={false}
+        onEndReached={loadIncidents}
+        onEndReachedThreshold={0.2}
+        refreshing={loadIncidentsRefresh}
         renderItem={({ item: incident }) => (
           <View style={styles.incident}>
             <Text style={styles.incidentProperty}>ONG:</Text>
