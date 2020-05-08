@@ -12,7 +12,7 @@ module.exports = {
 
     const incidents = await connection('incidents')
       .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
-      .limit(5) //Limito por 5 ocorrências
+      .limit(page === 0?count:5) //Limito por 5 ocorrências
       .offset((page -1) * 5) // Começa a partir do 0 e os próximos 5. Offset diz qual é o início.
       .select([
         'incidents.*', 
