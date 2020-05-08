@@ -1,5 +1,7 @@
+const generateUniqueId = require('../utils/generateUniqueId');
+
 const connection = require('../database/connection'); //Importando a conexão.
-const crypto = require('crypto'); //Importando pacote de criptografia do note.
+
 
 module.exports = {
   //------------------------------------------------------------------------------
@@ -17,7 +19,7 @@ module.exports = {
   async create(request, response) {
     const { name, email, whatsapp, city, uf } = request.body;
 
-    const id = crypto.randomBytes(4).toString('HEX');
+    const id = 1;
 
     await connection('ongs').insert({
       id,
