@@ -1,3 +1,10 @@
+<h3 align="center">
+    <img alt="Logo" title="#logo" width="300px" src="frontend/src/assets/logo.svg">
+    <br><br>
+    <b>Recicle! ajude o meio ambiente!</b>  
+    <br>
+</h3>
+
 # Semana_OmniStack_11
 
 Projeto: Be the Hero<br/>
